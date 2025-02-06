@@ -1,0 +1,40 @@
+{% extends "chat_app/base.html" %}
+
+{% load static %}
+{% block head %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block header %}ログイン{% endblock %}
+
+{% block main %}
+    <form method="post">
+
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="error-message">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+            <div class="center">
+                <label for="{{ form.username.id_for_label }}">ユーザーネーム:</label>
+                {{ form.username }}
+            </div>
+
+            <div class="center">
+                <label for="{{ form.password.id_for_label }}">パスワード:</label>
+                {{ form.password }}
+            </div>
+
+            <button type="submit">ログイン</button>
+
+    </form>
+{% endblock %}
+

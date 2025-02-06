@@ -1,0 +1,82 @@
+{% extends "chat_app/base.html" %}
+
+{% load static %}
+{% block head %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+    
+{% block header %}会員登録{% endblock %}
+{% block main %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+
+        <div class="row">
+            <label for="{{ form.email.id_for_label }}">Email<br>address:</label>
+            {{ form.email }}
+        </div>
+
+        <div class="row">
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="row">
+            <label for="{{ form.password2.id_for_label }}">Password<br>confirmation:</label>
+            {{ form.password2 }}
+        </div>
+
+        <div class="row">
+            <label for="{{ form.img.id_for_label }}">img:</label>
+            {{ form.img }}
+        </div>
+
+        <button type="submit">submit</button>
+
+
+        {% if form.username.errors %}
+                <div class="error-list">
+                    {% for error in form.username.errors %}
+                        <span class="error">{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+        {% endif %}
+
+        {% if form.email.errors %}
+                <div class="error-list">
+                    {% for error in form.email.errors %}
+                        <span class="error">{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+        {% endif %}
+
+        {% if form.password1.errors %}
+                <div class="error-list">
+                    {% for error in form.password1.errors %}
+                        <span class="error">{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+        {% endif %}
+
+        {% if form.password2.errors %}
+                <div class="error-list">
+                    {% for error in form.password2.errors %}
+                        <span class="error">{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            <div class="error-list">
+                {% for error in form.non_field_errors %}
+                    <span class="error">{{ error }}</span><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}

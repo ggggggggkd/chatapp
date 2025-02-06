@@ -1,0 +1,32 @@
+.hedds {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: #ddd;
+}
+
+.back, .refresh-button {
+    text-decoration: none;
+    font-size: 10px;
+    color: black;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+header .back {
+    margin-right: auto;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.content {
+    text-align: left;
+}
+
+.time {
+    text-align: right;
+}

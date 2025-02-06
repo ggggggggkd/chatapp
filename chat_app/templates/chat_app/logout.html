@@ -1,0 +1,19 @@
+{% extends "chat_app/base.html" %}
+
+{% load static %}
+{% block head %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'css/friends.css' %}">
+{% endblock %}
+
+{% block header %}ログアウト{% endblock %}
+
+{% block main %}
+ログアウトしました。
+{% endblock %}
+
+{% block footer %}
+    <div class="select">
+        <div class="tomodachi"><a href="{% url 'login' %}">ログイン画面へ戻る</a></div>
+    </div>
+{% endblock %}

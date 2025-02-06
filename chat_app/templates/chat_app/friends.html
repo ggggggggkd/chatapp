@@ -1,0 +1,33 @@
+{% extends "chat_app/base.html" %}
+
+{% load static %}
+{% block head %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'css/friends.css' %}">
+{% endblock %}
+
+{% block header %}友達{% endblock %}
+
+{% block main %}
+    <div class="user-list">
+        {% for user in users %}
+            <a class="user-box" href="{% url 'talkroom' user.id %}">
+                <img src="{{ user.img_url }}" alt="{{ user.username }}のアイコン" class="user-icon">
+                <div class="user-info">
+                    <h3>{{ user.username }}</h3>
+                    <p>{{ user.last_message }}</p>
+                </div>
+                <div class="time">{{ user.last_message_time|date:"H:i" }}</div>
+            </a>
+        {% empty %}
+            <div>No users found.</div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div class="select">
+        <div class="tomodachi">友達</div>
+        <div class="settei"><a href="{% url 'setting' %}">設定</a></div>
+    </div>
+{% endblock %}

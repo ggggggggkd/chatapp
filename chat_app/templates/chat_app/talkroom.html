@@ -1,0 +1,40 @@
+{% extends "chat_app/base.html" %}
+
+{% block title %}
+    {{ recipient.username }}とのトーク
+{% endblock %}
+
+{% block head %}
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'css/talkroom.css' %}">
+{% endblock %}
+
+
+{% block header %}
+    <div class="hedds">
+        <div><a href="{% url 'friends' %}" class="back">＜</a></div>
+        <div class="headertitle">{{ recipient.username }}</div>
+        <div><a href="{% url 'refresh_conversation' recipient.id %}" class="refresh-button">更新</a></div>
+    </div>
+{% endblock %}
+
+{% block main %}
+<div class="individual">
+    {% for message in messages %}
+        <div class="message">
+            <strong>{{ message.sender.username }}:</strong>
+            <p class="content">{{ message.content }}</p>
+            <span class="time">{{ message.timestamp }}</span>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block footer %}
+<form method="POST" action="{% url 'send_message' %}">
+    {% csrf_token %}
+    <input type="hidden" name="recipient_id" value="{{ recipient.id }}">
+    <textarea name="content" required></textarea>
+    <button type="submit">送信</button>
+</form>
+{% endblock %}

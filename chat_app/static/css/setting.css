@@ -1,0 +1,22 @@
+.select {display: flex;}
+.tomodachi, .settei {
+    flex: 1;
+}
+
+.tomodachi {border-right: 2px solid #ddd;}
+
+html,body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    border: solid 2px gray;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 100px; 
+    padding: 0 20px;
+    font-weight: bold;
+}
